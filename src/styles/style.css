@@ -1,0 +1,9 @@
+.header-logo {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+.resizable-header {
+height: 100px;
+}
