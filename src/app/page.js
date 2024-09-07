@@ -23,7 +23,7 @@ export default function Home() {
     <main class="dark">
       <ResizablePanelGroup direction="vertical">
         <ResizablePanel defaultSize={8}>
-          <div className="header-logo">
+          <div className="header-logo elements">
             <img src="/images/logo.svg" alt="Logo" />
             <img src="/images/Studia.svg" alt="Studia" />
             <img src="/images/beta.svg" alt="Beta" />
@@ -36,44 +36,58 @@ export default function Home() {
         <ResizablePanel>
           <ResizablePanelGroup direction="horizontal">
             <ResizablePanel defaultSize={25}>
-              <h1>Chapter Information</h1>
+              <div className="elements container">
+                <div class="top">
+                  <h2 className="headers">Chapter Information</h2>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle>The Battle of The Atlantic (1941...</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>HIST 2307: Global Conflict Throughout History</CardDescription>
-                  <CardDescription>Dr. James P. Whinston</CardDescription>
-                </CardContent>
-              </Card>
+                  <Card className="card">
+                    <CardHeader>
+                      <div className="courseTitle">
+                        <img src="/images/ellipse.svg" class="courseTitle-ellipse"/>
+                        <CardTitle>The Battle of The Atlantic (1941...</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription>HIST 2307: Global Conflict Throughout History</CardDescription>
+                      <CardDescription>Dr. James P. Whinston</CardDescription>
+                    </CardContent>
+                  </Card>
 
-              Pipeline
+                  <h2 className="headers">Pipeline</h2>
 
-              <Card>
-                <CardContent>
-                  <CardDescription>@frontera-beta/v090524</CardDescription>
-                  <CardDescription>Latest frontera build. Main changes include improvements to personality, quality of output, and accuracy.</CardDescription>
-                </CardContent>
-              </Card>
+                  <Card className="card">
+                    <CardHeader>
+                      <CardTitle>@frontera-beta/v090524</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <h5 className="gray-text">Latest frontera build. Main changes include improvements to personality, quality of output, and accuracy.</h5>
+                    </CardContent>
+                  </Card>
+                </div>
 
-              <h1>Having a problem? Report it here.</h1>
+                <div className="bottom">
+                  <h1>Having a problem? Report it here.</h1>
 
-              <h3>Report a bug</h3>
+                  <h5>Report a bug</h5>
 
-              <div>
-                <Input type="text" placeholder="Description" />
-                <Button>Button</Button>
+                  <div className="report-button">
+                    <Input type="text" placeholder="Description"/>
+                    <Button>Send</Button>
+                  </div>
+
+                  <h6>This will be sent directly to our team.</h6>
+                </div>
+                
               </div>
-
-            <h4>This will be sent directly to our team.</h4>
 
             </ResizablePanel>
 
             <ResizableHandle />
 
             <ResizablePanel>
-              Two
+              <div className="elements">
+                      
+              </div>
             </ResizablePanel>
 
           </ResizablePanelGroup>

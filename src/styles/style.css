@@ -7,3 +7,56 @@
 .resizable-header {
 height: 100px;
 }
+
+.elements {
+  padding-inline: 4vh;
+  padding-block: 3vh;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  align-items: flex-start;
+}
+
+.top {
+  width: 100%;
+}
+
+.bottom {
+  margin-top: auto;
+  width: 100%;
+}
+
+.report-button {
+  display: flex;
+  gap: 1vh;
+  padding-block: 1vh;
+}
+
+.courseTitle {
+  display: flex;
+  vertical-align: middle;
+  gap: 1vh;
+}
+
+.courseTitle-ellipse {
+  width: 5%;
+}
+.headers {
+  padding-bottom: 1vh;
+}
+
+.card {
+  margin-bottom: 3vh;
+}
+
+.input-field {
+  color: var(--gray);
+}
+
+.gray-text {
+  color: var(--gray);
+}
