@@ -1,15 +1,14 @@
 import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const gilroyMedium = localFont({
+  src: "./fonts/Gilroy-Medium.ttf",
+  variable: "--font-gilroy-medium",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const gilroyRregular = localFont({
+  src: "./fonts/Gilroy-Regular.ttf",
+  variable: "--font-gilroy-regular",
 });
 
 export const metadata = {
@@ -23,7 +22,7 @@ export default function RootLayout({ children }) {
       <link rel="icon" href="/favicon.ico" sizes="any" />
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${gilroyRregular.variable} ${gilroyMedium.variable} antialiased`}
       >
         {children}
       </body>
