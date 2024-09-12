@@ -1,33 +1,73 @@
+'use client';
+
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/components/ui/resizable"
+} from "@/components/ui/resizable";
 
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-import "../styles/style.css"
+import { useEffect, useState } from 'react';
+
+import "../styles/style.css";
 
 export default function Home() {
+  const [user, setUser] = useState(null);
+  const [course, setCourse] = useState(null);
+  const [chapters, setChapters] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const res = await fetch('/api/course');
+        const data = await res.json();
+
+        console.log('Fetched data:', data);
+
+        if (!data || !data.user || !data.course || !data.chapters) {
+          console.error('No data found or some data is missing');
+          setError('No data found');
+          return;
+        }
+
+        setUser(data.user);
+        setCourse(data.course);
+        setChapters(data.chapters);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setError('Error fetching data');
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  console.log('User state:', user);
+  console.log('Course state:', course);
+  console.log('Chapters state:', chapters);
+
+  // find chapter that matches the ID from the course
+  const courseChapter = chapters.find(chapter => chapter._id === course?.chapters?.[0]);
+
   return (
-    <main class="dark">
+    <main className="dark">
       <ResizablePanelGroup direction="vertical">
         <ResizablePanel defaultSize={8}>
           <div className="header-logo elements">
             <img src="/images/logo.svg" alt="Logo" />
             <img src="/images/Studia.svg" alt="Studia" />
             <img src="/images/beta.svg" alt="Beta" />
-
           </div>
         </ResizablePanel>
 
@@ -37,21 +77,27 @@ export default function Home() {
           <ResizablePanelGroup direction="horizontal">
             <ResizablePanel defaultSize={25}>
               <div className="elements container">
-                <div class="top">
+                <div className="top">
                   <h2 className="headers">Chapter Information</h2>
 
-                  <Card className="card">
-                    <CardHeader>
-                      <div className="courseTitle">
-                        <img src="/images/ellipse.svg" class="courseTitle-ellipse"/>
-                        <CardTitle>The Battle of The Atlantic (1941...</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription>HIST 2307: Global Conflict Throughout History</CardDescription>
-                      <CardDescription>Dr. James P. Whinston</CardDescription>
-                    </CardContent>
-                  </Card>
+                  {error ? (
+                    <div className="error">Error: {error}</div>
+                  ) : courseChapter ? (
+                    <Card className="card">
+                      <CardHeader>
+                        <div className="courseTitle">
+                          <img src="/images/ellipse.svg" className="courseTitle-ellipse" />
+                          <CardTitle>{courseChapter.title}</CardTitle>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <CardDescription>{course.number}: {course.title}</CardDescription>
+                        <CardDescription>{course.professor}</CardDescription>
+                      </CardContent>
+                    </Card>
+                  ) : (
+                    <div>No data available</div>
+                  )}
 
                   <h2 className="headers">Pipeline</h2>
 
@@ -71,29 +117,24 @@ export default function Home() {
                   <h5>Report a bug</h5>
 
                   <div className="report-button">
-                    <Input type="text" placeholder="Description"/>
+                    <Input type="text" placeholder="Description" />
                     <Button>Send</Button>
                   </div>
 
                   <h6>This will be sent directly to our team.</h6>
                 </div>
-                
               </div>
-
             </ResizablePanel>
 
             <ResizableHandle />
 
             <ResizablePanel>
               <div className="elements">
-                      
               </div>
             </ResizablePanel>
-
           </ResizablePanelGroup>
         </ResizablePanel>
       </ResizablePanelGroup>
-
     </main>
   );
 }
