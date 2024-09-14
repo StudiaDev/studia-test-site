@@ -24,7 +24,8 @@ import "../styles/style.css";
 export default function Home() {
   const [user, setUser] = useState(null);
   const [course, setCourse] = useState(null);
-  const [chapters, setChapters] = useState([]);
+  const [chapter, setChapter] = useState(null);
+  const [chapterText, setChapterText] = useState('');
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function Home() {
 
         console.log('Fetched data:', data);
 
-        if (!data || !data.user || !data.course || !data.chapters) {
+        if (!data || !data.user || !data.course || !data.chapter) {
           console.error('No data found or some data is missing');
           setError('No data found');
           return;
@@ -43,7 +44,9 @@ export default function Home() {
 
         setUser(data.user);
         setCourse(data.course);
-        setChapters(data.chapters);
+        setChapter(data.chapter);
+        setChapterText(data.chapterText);
+
       } catch (error) {
         console.error('Error fetching data:', error);
         setError('Error fetching data');
@@ -55,10 +58,11 @@ export default function Home() {
 
   console.log('User state:', user);
   console.log('Course state:', course);
-  console.log('Chapters state:', chapters);
+  console.log('Chapter state:', chapter);
+  console.log('Chapter text:', chapterText);
 
   // find chapter that matches the ID from the course
-  const courseChapter = chapters.find(chapter => chapter._id === course?.chapters?.[0]);
+  const courseChapter = chapter && course?.chapter === chapter._id ? chapter : null;
 
   return (
     <main className="dark">
@@ -130,6 +134,7 @@ export default function Home() {
 
             <ResizablePanel>
               <div className="elements">
+                {chapterText}
               </div>
             </ResizablePanel>
           </ResizablePanelGroup>

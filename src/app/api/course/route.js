@@ -20,13 +20,21 @@ export async function GET(request) {
       return new Response('Course not found', { status: 404 });
     }
 
-    // fetch chapters related to course
-    const chapters = await db.collection('chapters')
-      .find({ _id: { $in: course.chapters } })
-      .toArray();
+    // fetch chapter related to course
+    const chapter = await db.collection('chapters').findOne({ _id: course.chapter });
 
-    // return user, course, and chapters as JSON
-    return new Response(JSON.stringify({ user, course, chapters }), {
+    if (!chapter) {
+      return new Response('Chapter not found', { status: 404 });
+    }
+
+    // fetch text file content from Google Drive
+    var textLink2 = chapter.textFile.replace('/view?usp=sharing', '');
+    const textLink = textLink2.replace('file/d/', 'uc?export=download&id=');
+    const response = await fetch(textLink);
+    const textContent = await response.text();
+
+    // return data
+    return new Response(JSON.stringify({ user, course, chapter, chapterText: textContent }), {
       headers: { 'Content-Type': 'application/json' },
       status: 200
     });
