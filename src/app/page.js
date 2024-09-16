@@ -56,6 +56,21 @@ function RawChapterInformationContainer({book, chapterNum, pages, words, time}) 
   )
 }
 
+function CurrentCourseInformation({course, chapterNum, pages, image}) {
+  return (
+    <InformationContainer title={"Course Information"}>
+      <div className="chapter-information-container" style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+        <div> 
+          <img src={image} className="course-image"></img>
+        </div>
+        <div style={{ marginLeft: '20px' }}>
+        <p className="chapter-information-container-supplementary info">{chapterNum + '-' + pages + ' pages'}</p>
+        <p className="chapter-information-container-course-name" style={{ fontWeight: '400', fontSize: 20}}>{course}</p>
+        </div>
+      </div>
+    </InformationContainer>
+  )
+}
 export default function Home() {
   return (
     <main className="dark">
@@ -65,6 +80,9 @@ export default function Home() {
       </div>
       <div className="elements">
         <RawChapterInformationContainer book={"Global Conflicts Throughout History - 3rd Edition"} chapterNum={"Chapter 3"} pages={"13"} words={"12,342"} time={"2"} />
+      </div>
+      <div className="elements">
+        <CurrentCourseInformation chapterNum={"2"} course={"Introduction to Machine Learning"} pages={"18"}  time={"2"} image={"/images/character.png"}/>
       </div>
     </main>
   );

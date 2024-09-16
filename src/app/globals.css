@@ -122,3 +122,9 @@ h6 {
   font-size: 1.2vh;
   color: var(--gray);
 }
+.course-image {
+  width: 80px;           
+  height: 80px;         
+  border-radius: 15px;   
+  object-fit: cover;     
+}
