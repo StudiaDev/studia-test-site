@@ -81,6 +81,72 @@
   align-items: flex-start;
 }
 
+.general-card{
+  width: 384px;
+  height: 80px;
+  border-radius: 13px;
+  background-color: #111111; 
+  border: 1px solid #3B3F44; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+}
+
+.course-image {
+  width: 54px;           
+  height: 54px;         
+  border-radius: 6px;   
+}
+
+.subtext-grey {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer {
+position: absolute;
+width: 1512px;
+height: 0px;
+left: 0px;
+top: 977px;
+border: 1px solid #363636;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.small-image{
+position: absolute;
+width: 36.3px;
+height: 20px;
+left: 47px;
+top: 1029px;
+}
+
+.footer-subtext{
+position: absolute;
+width: 195px;
+height: 40px;
+left: 47px;
+top: 1062px;
+font-family: 'Gilroy-Medium';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 20px;
+color: #FFFFFF;
+}
+
+.copyright{
+position: absolute;
+width: 224px;
+height: 20px;
+left: 47px;
+top: 1151px;
+font-family: 'Gilroy-Medium';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 20px;
+color: #FFFFFF;
+
+
+}
 .top {
   width: 100%;
 }

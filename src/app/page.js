@@ -58,19 +58,20 @@ function RawChapterInformationContainer({book, chapterNum, pages, words, time}) 
 
 function CurrentCourseInformation({course, chapterNum, pages, image}) {
   return (
-    <InformationContainer title={"Course Information"}>
-      <div className="chapter-information-container" style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+    <div class='general-card'>
+      <div className="chapter-information-container" style={{display: 'flex', flexDirection: 'row',  alignItems: 'center'}}>
         <div> 
           <img src={image} className="course-image"></img>
         </div>
-        <div style={{ marginLeft: '20px' }}>
-        <p className="chapter-information-container-supplementary info">{chapterNum + '-' + pages + ' pages'}</p>
-        <p className="chapter-information-container-course-name" style={{ fontWeight: '400', fontSize: 20}}>{course}</p>
+        <div style={{ marginLeft: '10px' }}>
+        <p className="chapter-information-container-supplementary info" style={{ fontWeight: '400', fontSize: 7}} class='subtext-grey'>{chapterNum + '-' + pages + ' pages'}</p>
+        <p className="chapter-information-container-course-name" style={{ fontWeight: '400', fontSize: 15}}>{course}</p>
         </div>
       </div>
-    </InformationContainer>
+    </div>
   )
 }
+
 export default function Home() {
   return (
     <main className="dark">
@@ -84,6 +85,10 @@ export default function Home() {
       <div className="elements">
         <CurrentCourseInformation chapterNum={"2"} course={"Introduction to Machine Learning"} pages={"18"}  time={"2"} image={"/images/character.png"}/>
       </div>
+      <div class='footer'/>
+      <img src='/images/studia-small-logo.png' class="small-image" />
+      <div class="footer-subtext">AI pipelines adapted to your learning style.</div>
+      <div class="copyright">© 2024, Crafted by passionate students in Texas.</div>
     </main>
   );
 }
