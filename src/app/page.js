@@ -86,8 +86,8 @@ export default function Home() {
         <CurrentCourseInformation chapterNum={"2"} course={"Introduction to Machine Learning"} pages={"18"}  time={"2"} image={"/images/character.png"}/>
       </div>
       <div class='footer'/>
-      <img src='/images/studia-small-logo.png' class="small-image" />
-      <div class="footer-subtext">AI pipelines adapted to your learning style.</div>
+        <img src='/images/studia-small-logo.png' class="small-image" />
+        <div class="footer-subtext">AI pipelines adapted to your learning style.</div>
       <div class="copyright">© 2024, Crafted by passionate students in Texas.</div>
     </main>
   );
