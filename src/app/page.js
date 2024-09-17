@@ -27,34 +27,65 @@ export default function Home() {
   const [chapter, setChapter] = useState(null);
   const [chapterText, setChapterText] = useState('');
   const [error, setError] = useState(null);
+  const [code, setCode] = useState('');                     // user activation code
+  const [isActivated, setIsActivated] = useState(false);    // check if user is found
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const res = await fetch('/api/course');
-        const data = await res.json();
+  const handleActivation = async () => {
+    try {
+      const res = await fetch(`/api/course?code=${code}`);
+      const data = await res.json();
 
-        console.log('Fetched data:', data);
-
-        if (!data || !data.user || !data.course || !data.chapter) {
-          console.error('No data found or some data is missing');
-          setError('No data found');
-          return;
-        }
-
-        setUser(data.user);
-        setCourse(data.course);
-        setChapter(data.chapter);
-        setChapterText(data.chapterText);
-
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setError('Error fetching data');
+      if (!data || !data.user || !data.course || !data.chapter) {
+        console.error('No data found or some data is missing');
+        setError('No data found');
+        return;
       }
-    };
 
-    fetchUserData();
-  }, []);
+      // check & log chapterText
+      let parsedChapterText = {};
+      if (typeof data.chapterText === 'string') {
+        parsedChapterText = JSON.parse(data.chapterText);
+      } else {
+        parsedChapterText = data.chapterText;
+      }
+
+      // set state with parsed data
+      setUser(data.user);
+      setCourse(data.course);
+      setChapter(data.chapter);
+      setChapterText(parsedChapterText);
+      setIsActivated(true);
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setError('Error fetching data');
+    }
+  };
+
+  // only fetch data if user has been activated
+  useEffect(() => {
+    if (isActivated) {
+      handleActivation();
+    }
+  }, [isActivated]);
+
+  if (!isActivated) {
+    return (
+      <main className="dark">
+        <div className="activation-screen">
+          <h1>Activate your test lecture.</h1>
+          <Input
+            type="text"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            placeholder="Enter 6-digit code"
+          />
+          <Button onClick={handleActivation}>Activate</Button>
+          {error && <div className="error">{error}</div>}
+        </div>
+      </main>
+    );
+  }
 
   console.log('User state:', user);
   console.log('Course state:', course);
@@ -134,7 +165,16 @@ export default function Home() {
 
             <ResizablePanel>
               <div className="elements">
-                {chapterText}
+                {chapterText && chapterText.topic_list && chapterText.topic_list.length > 0 ? (
+                  chapterText.topic_list.map((topic, index) => (
+                    <div key={index}>
+                      <h3>{topic.title}</h3>
+                      <p>{topic.content}</p>
+                    </div>
+                  ))
+                ) : (
+                  <div>No topics available</div>
+                )}
               </div>
             </ResizablePanel>
           </ResizablePanelGroup>

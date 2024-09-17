@@ -5,12 +5,19 @@ export async function GET(request) {
   try {
     const { db } = await connectToDatabase();
 
-    // fetch user
-    // TODO: actually look for specific one
-    const user = await db.collection('users').findOne({});
+    // get the code from the query parameter
+    const { searchParams } = new URL(request.url);
+    const code = searchParams.get('code');
+
+    if (!code) {
+      return new Response('Code is required', { status: 400 });
+    }
+
+    // find user by the code
+    const user = await db.collection('users').findOne({ code: code });
 
     if (!user) {
-      return new Response('No user found', { status: 404 });
+      return new Response('No user found with this code', { status: 404 });
     }
 
     // fetch course document using course id from user
@@ -28,13 +35,21 @@ export async function GET(request) {
     }
 
     // fetch text file content from Google Drive
-    var textLink2 = chapter.textFile.replace('/view?usp=sharing', '');
-    const textLink = textLink2.replace('file/d/', 'uc?export=download&id=');
+    const textLink = chapter.textFile.replace('/view?usp=drive_link', '').replace('file/d/', 'uc?export=download&id=');
+    console.log(textLink);
     const response = await fetch(textLink);
-    const textContent = await response.text();
+
+    // check if response is OK
+    if (!response.ok) {
+      throw new Error(`Failed to fetch JSON: ${response.statusText}`);
+    }
+
+    // parse JSON content
+    const jsonContent = await response.json();
+    
 
     // return data
-    return new Response(JSON.stringify({ user, course, chapter, chapterText: textContent }), {
+    return new Response(JSON.stringify({ user, course, chapter, chapterText: jsonContent }), {
       headers: { 'Content-Type': 'application/json' },
       status: 200
     });
