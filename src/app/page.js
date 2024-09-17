@@ -64,7 +64,7 @@ function CurrentCourseInformation({course, chapterNum, pages, image}) {
           <img src={image} className="course-image"></img>
         </div>
         <div style={{ marginLeft: '10px' }}>
-        <p className="chapter-information-container-supplementary info" style={{ fontWeight: '400', fontSize: 7}} class='subtext-grey'>{chapterNum + '-' + pages + ' pages'}</p>
+        <p className="chapter-information-container-supplementary-info" style={{ fontWeight: '400', fontSize: 7, color: '#8D8D8D'}}>{chapterNum + '-' + pages + ' pages'}</p>
         <p className="chapter-information-container-course-name" style={{ fontWeight: '400', fontSize: 15}}>{course}</p>
         </div>
       </div>
@@ -79,16 +79,17 @@ export default function Home() {
       <div className="elements">
         <PipelineInformationContainer checkpoint={"frontera-beta/v090524"} model={"gpt-4o-2024-08-06"} />
       </div>
-      <div className="elements">
+      <div className="elements">                
         <RawChapterInformationContainer book={"Global Conflicts Throughout History - 3rd Edition"} chapterNum={"Chapter 3"} pages={"13"} words={"12,342"} time={"2"} />
       </div>
       <div className="elements">
         <CurrentCourseInformation chapterNum={"2"} course={"Introduction to Machine Learning"} pages={"18"}  time={"2"} image={"/images/character.png"}/>
       </div>
-      <div class='footer'/>
+      <div class='footer'>
       <img src='/images/studia-small-logo.png' class="small-image" />
       <div class="footer-subtext">AI pipelines adapted to your learning style.</div>
       <div class="copyright">© 2024, Crafted by passionate students in Texas.</div>
+      </div>
     </main>
   );
 }
