@@ -1,4 +1,6 @@
 import "../styles/style.css"
+import { Button } from "@/components/ui/button"
+
 
 function Header() {
   return (
@@ -72,23 +74,24 @@ function CurrentCourseInformation({course, chapterNum, pages, image}) {
   )
 }
 
+function PresentationManagerNavButtons() {
+  return (
+    <div className="presentation-manager-nav-buttons">
+        <Button className="button-icon" variant="outline" size="icon">
+          <img src="/images/chevron-left.svg" alt="Previous" />
+        </Button>
+        <Button className="button-icon" variant="outline" size="icon">
+          <img src="/images/chevron-right.svg" alt="Next" />
+        </Button>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <main className="dark">
       <Header />
-      <div className="elements">
-        <PipelineInformationContainer checkpoint={"frontera-beta/v090524"} model={"gpt-4o-2024-08-06"} />
-      </div>
-      <div className="elements">
-        <RawChapterInformationContainer book={"Global Conflicts Throughout History - 3rd Edition"} chapterNum={"Chapter 3"} pages={"13"} words={"12,342"} time={"2"} />
-      </div>
-      <div className="elements">
-        <CurrentCourseInformation chapterNum={"2"} course={"Introduction to Machine Learning"} pages={"18"}  time={"2"} image={"/images/character.png"}/>
-      </div>
-      <div class='footer'/>
-        <img src='/images/studia-small-logo.png' class="small-image" />
-        <div class="footer-subtext">AI pipelines adapted to your learning style.</div>
-      <div class="copyright">© 2024, Crafted by passionate students in Texas.</div>
+      <PresentationManagerNavButtons />
     </main>
   );
 }

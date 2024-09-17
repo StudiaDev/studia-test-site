@@ -1,3 +1,13 @@
+.presentation-manager-nav-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.button-icon {
+  border: 0.7px solid var(--gray);
+}
+
 .chapter-information-metadata {
   font-size: 10px;
   color: var(--subtext-color);
