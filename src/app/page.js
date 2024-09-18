@@ -76,7 +76,7 @@ export default function Home() {
   return (
     <main className="dark">
       <Header />
-      <div className="elements">
+      {/* <div className="elements">
         <PipelineInformationContainer checkpoint={"frontera-beta/v090524"} model={"gpt-4o-2024-08-06"} />
       </div>
       <div className="elements">                
@@ -84,11 +84,15 @@ export default function Home() {
       </div>
       <div className="elements">
         <CurrentCourseInformation chapterNum={"2"} course={"Introduction to Machine Learning"} pages={"18"}  time={"2"} image={"/images/character.png"}/>
+      </div> */}
+      <div class='auth-main-text'>Activate your test lecture
+        <div class='auth-sub-text'>Enter the 6-digit authorization code that was provided to you in the onboarding email.</div>
+        <div class='home-page-link'> Looking for our home page? Click here.</div>
       </div>
       <div class='footer'>
-      <img src='/images/studia-small-logo.png' class="small-image" />
-      <div class="footer-subtext">AI pipelines adapted to your learning style.</div>
-      <div class="copyright">© 2024, Crafted by passionate students in Texas.</div>
+        <img src='/images/studia-small-logo.png' class="small-image" />
+        <div class="footer-subtext">AI pipelines adapted to your learning style.</div>
+        <div class="copyright">© 2024, Crafted by passionate students in Texas.</div>
       </div>
     </main>
   );
