@@ -1,4 +1,10 @@
 import "../styles/style.css"
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/components/ui/input-otp"
 
 function Header() {
   return (
@@ -71,6 +77,23 @@ function CurrentCourseInformation({course, chapterNum, pages, image}) {
     </div>
   )
 }
+export function InputOTPDemo() {
+  return (
+    <InputOTP maxLength={6}>
+      <InputOTPGroup>
+        <InputOTPSlot index={0} />
+        <InputOTPSlot index={1} />
+        <InputOTPSlot index={2} />
+      </InputOTPGroup>
+      <InputOTPSeparator />
+      <InputOTPGroup>
+        <InputOTPSlot index={3} />
+        <InputOTPSlot index={4} />
+        <InputOTPSlot index={5} />
+      </InputOTPGroup>
+    </InputOTP>                   
+  )
+}
 
 export default function Home() {
   return (
@@ -87,6 +110,9 @@ export default function Home() {
       </div> */}
       <div class='auth-main-text'>Activate your test lecture
         <div class='auth-sub-text'>Enter the 6-digit authorization code that was provided to you in the onboarding email.</div>
+        <div className="elements" >
+          <InputOTPDemo/>
+        </div>
         <div class='home-page-link'> Looking for our home page? Click here.</div>
       </div>
       <div class='footer'>
