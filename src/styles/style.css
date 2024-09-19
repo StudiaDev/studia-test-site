@@ -1,3 +1,31 @@
+/* Div Hierarchy */
+.flex-full {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.flex-panels {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+/* left panel*/
+.left-flex-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  flex: 1;
+  padding-block: 20px;
+}
+.left-panel-element {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-inline: 20px;
+}
+
 /* Header */
 .header {
   display: flex;
@@ -112,21 +140,4 @@
 }
 .button-icon {
   border: 0.7px solid var(--gray);
-}
-
-/* Hero */
-.hero-space {
-  display: flex;
-  flex-direction: row;
-}
-.left-panel {
-  height: 100vh;
-  border-right: 0.7px solid var(--gray);
-}
-.left-panel-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-inline: 30px;
-  padding-block: 30px;
 }
