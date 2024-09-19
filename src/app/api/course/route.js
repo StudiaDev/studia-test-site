@@ -35,7 +35,7 @@ export async function GET(request) {
     }
 
     // fetch text file content from Google Drive
-    const textLink = chapter.textFile.replace('/view?usp=drive_link', '').replace('file/d/', 'uc?export=download&id=');
+    const textLink = chapter.textFile.replace('/view?usp=drive_link', '').replace('/view?usp=sharing', '').replace('file/d/', 'uc?export=download&id=');
     console.log(textLink);
     const response = await fetch(textLink);
 

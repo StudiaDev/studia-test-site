@@ -30,6 +30,9 @@ export default function Home() {
   const [code, setCode] = useState('');                     // user activation code
   const [isActivated, setIsActivated] = useState(false);    // check if user is found
 
+  const [topicIndex, setTopicIndex] = useState(0);
+  const [contentIndex, setContentIndex] = useState(-1);
+
   const handleActivation = async () => {
     try {
       const res = await fetch(`/api/course?code=${code}`);
@@ -94,6 +97,31 @@ export default function Home() {
 
   // find chapter that matches the ID from the course
   const courseChapter = chapter && course?.chapter === chapter._id ? chapter : null;
+
+  // LEFT BUTTON
+  const handleLeft = () => {
+    if (contentIndex > -1) {
+      setContentIndex(contentIndex - 1);
+    } else if (topicIndex > 0) {
+      const prevTopicIndex = topicIndex - 1;
+      const prevTopicContentLength =
+        chapterText.topic_list[prevTopicIndex].topic_content.length;
+      setTopicIndex(prevTopicIndex);
+      setContentIndex(prevTopicContentLength - 1);
+    }
+  };
+  
+  // RIGHT BUTTON
+  const handleRight = () => {
+    const currentTopic = chapterText.topic_list[topicIndex];
+    if (contentIndex < currentTopic.topic_content.length - 1) {
+      setContentIndex(contentIndex + 1);
+    } else if (topicIndex < chapterText.topic_list.length - 1) {
+      setTopicIndex(topicIndex + 1);
+      setContentIndex(-1);
+    }
+  };
+  
 
   return (
     <main className="dark">
@@ -164,17 +192,30 @@ export default function Home() {
             <ResizableHandle />
 
             <ResizablePanel>
-              <div className="elements">
-                {chapterText && chapterText.topic_list && chapterText.topic_list.length > 0 ? (
-                  chapterText.topic_list.map((topic, index) => (
-                    <div key={index}>
-                      <h3>{topic.title}</h3>
-                      <p>{topic.content}</p>
-                    </div>
-                  ))
-                ) : (
-                  <div>No topics available</div>
-                )}
+              <div className="content-display">
+                <h2>
+                  {contentIndex === -1
+                    ? chapterText.topic_list[topicIndex].topic_title
+                    : chapterText.topic_list[topicIndex].topic_content[contentIndex]}
+                </h2>
+                <div className="navigation-buttons">
+                  <Button
+                    onClick={handleLeft}
+                    disabled={topicIndex === 0 && contentIndex === -1}
+                  >
+                    &larr;
+                  </Button>
+                  <Button
+                    onClick={handleRight}
+                    disabled={
+                      topicIndex === chapterText.topic_list.length - 1 &&
+                      contentIndex ===
+                        chapterText.topic_list[topicIndex].topic_content.length - 1
+                    }
+                  >
+                    &rarr;
+                  </Button>
+                </div>
               </div>
             </ResizablePanel>
           </ResizablePanelGroup>
