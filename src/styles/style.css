@@ -145,6 +145,11 @@ line-height: 20px;
 color: #FFFFFF;
 }
 
+.auth-numpad{
+  position: relative;
+  right: 44px;
+}
+
 .auth-main-text{
 position: absolute;
 width: 255px;
@@ -157,6 +162,7 @@ font-size: 25px;
 line-height: 20px;
 text-align: center;
 color: #FFFFFF;
+white-space: nowrap;
 }
 
 .custom-otp-input {
@@ -176,6 +182,8 @@ font-size: 12px;
 line-height: 16px;
 text-align: center;
 color: rgba(255, 255, 255, 0.6);
+white-space: normal;
+left: 18px;
 }
 
 .home-page-link{
@@ -183,6 +191,7 @@ position: relative;
 width: 255px;
 height: 16px;
 /* left: 40.07vw; */
+left: 18px;
 padding-top: 21px;
 font-style: normal;
 font-weight: 400;

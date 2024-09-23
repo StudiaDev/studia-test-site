@@ -80,13 +80,13 @@ function CurrentCourseInformation({course, chapterNum, pages, image}) {
 export function InputOTPDemo() {
   return (
     <InputOTP maxLength={6}>
-      <InputOTPGroup>
+      <InputOTPGroup className="auth-numpad">
         <InputOTPSlot index={0} />
         <InputOTPSlot index={1} />
         <InputOTPSlot index={2} />
       </InputOTPGroup>
-      <InputOTPSeparator />
-      <InputOTPGroup>
+      <InputOTPSeparator className="auth-numpad"/>
+      <InputOTPGroup className="auth-numpad">
         <InputOTPSlot index={3} />
         <InputOTPSlot index={4} />
         <InputOTPSlot index={5} />
@@ -111,7 +111,7 @@ export default function Home() {
       <div class='auth-main-text'>Activate your test lecture
         <div class='auth-sub-text'>Enter the 6-digit authorization code that was provided to you in the onboarding email.</div>
         <div className="elements" >
-          <InputOTPDemo/>
+          <InputOTPDemo />
         </div>
         <div class='home-page-link'> Looking for our home page? Click here.</div>
       </div>
