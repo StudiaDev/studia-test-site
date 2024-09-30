@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }
@@ -55,7 +55,7 @@ body {
     --radius: 0.5rem;
   }
   .dark {
-    --background: 240 10% 3.9%;
+    --background: #000000;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -99,26 +99,25 @@ main {
 }
 
 h1 {
-  font-size: 2.6vh;
+  font-size: 2em;
 }
 
 h2 {
-  font-size: 2.3vh;
+  font-size: 1.5em;
 }
 
 h3 {
-  font-size: 2vh;
+  font-size: 1.17em;
 }
 
 h4 {
-  font-size: 12px;
+  font-size: 1em;
 }
 
 h5 {
-  font-size: 1.4vh;
+  font-size: 0.83em;
 }
 
 h6 {
-  font-size: 1.2vh;
-  color: var(--gray);
+  font-size: 0.67em;
 }

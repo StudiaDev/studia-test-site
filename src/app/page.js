@@ -98,7 +98,23 @@ export function InputOTPDemo() {
 export default function Home() {
   return (
     <main className="dark">
-      <Header />
+      <div className="auth-page-wrapper">
+        <Header />
+        <div className="auth-content-wrapper-col">
+          <h2>Activate your test lecture.</h2>
+          <p className="paragraph-text bottom-pad">Enter the 6-digit authorization code that was provided to you in the onboarding email.</p>
+          <InputOTPDemo />
+          <div className="homepage-text">
+            <p className="homepage-lead">Looking for our home page?</p>
+            <p className="homepage-trail">Click here.</p>
+          </div>
+        </div>
+      </div>
+      <div class='footer'>
+        <img src='/images/logo.svg' class="small-image" />
+        <div class="footer-subtext">AI pipelines adapted to your learning style.</div>
+        <div class="copyright">© 2024, Developed by passionate students in Texas.</div>
+      </div>
       {/* <div className="elements">
         <PipelineInformationContainer checkpoint={"frontera-beta/v090524"} model={"gpt-4o-2024-08-06"} />
       </div>
@@ -108,18 +124,13 @@ export default function Home() {
       <div className="elements">
         <CurrentCourseInformation chapterNum={"2"} course={"Introduction to Machine Learning"} pages={"18"}  time={"2"} image={"/images/character.png"}/>
       </div> */}
-      <div class='auth-main-text'>Activate your test lecture
+      {/* <div class='auth-main-text'>Activate your test lecture
         <div class='auth-sub-text'>Enter the 6-digit authorization code that was provided to you in the onboarding email.</div>
         <div className="elements" >
           <InputOTPDemo />
         </div>
         <div class='home-page-link'> Looking for our home page? Click here.</div>
-      </div>
-      <div class='footer'>
-        <img src='/images/studia-small-logo.png' class="small-image" />
-        <div class="footer-subtext">AI pipelines adapted to your learning style.</div>
-        <div class="copyright">© 2024, Crafted by passionate students in Texas.</div>
-      </div>
+      </div>*/}
     </main>
   );
 }
