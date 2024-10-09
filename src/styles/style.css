@@ -74,6 +74,7 @@
   box-sizing: border-box;
 }
 
+
 .container {
   display: flex;
   flex-direction: column;
@@ -222,6 +223,28 @@ color: rgba(255, 255, 255, 0.6);
   vertical-align: middle;
   gap: 1vh;
 }
+
+.blank{
+  font-size : 0px;
+}
+
+.wrong-input{
+  padding-top: 2.5vh;
+  padding-left: 0vw;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  width: 17vw;
+  line-height: 16px;
+  white-space: normal;
+  word-wrap: break-word; 
+  overflow-wrap: break-word; 
+  text-align: center;
+  
+  color: #FF7272;
+  
+  
+  }
 
 .courseTitle-ellipse {
   width: 5%;

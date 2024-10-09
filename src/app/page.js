@@ -1,4 +1,7 @@
+"use client";
 import "../styles/style.css"
+import React, { useState } from 'react';
+
 import {
   InputOTP,
   InputOTPGroup,
@@ -96,8 +99,11 @@ export function InputOTPDemo() {
 }
 
 export default function Home() {
+
+  const [isBlurred, setIsBlurred] = useState(false);
+  const [isIncorrect, setIsIncorrect] = useState(false);
   return (
-    <main className="dark">
+    <main className={`dark ${isBlurred ? 'blurred' : ''}`}>
       <Header />
       {/* <div className="elements">
         <PipelineInformationContainer checkpoint={"frontera-beta/v090524"} model={"gpt-4o-2024-08-06"} />
@@ -114,6 +120,7 @@ export default function Home() {
           <InputOTPDemo />
         </div>
         <div class='home-page-link'> Looking for our home page? Click here.</div>
+        <div class={`blank ${isIncorrect ? 'wrong-input' : ''}`}>Invalid authorization code. Make sure you’ve entered the correct code.</div>
       </div>
       <div class='footer'>
         <img src='/images/studia-small-logo.png' class="small-image" />
