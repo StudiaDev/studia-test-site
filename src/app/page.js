@@ -1,7 +1,6 @@
 "use client";
 import "../styles/style.css"
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import {
   InputOTP,
   InputOTPGroup,
@@ -101,7 +100,21 @@ export function InputOTPDemo() {
 export default function Home() {
 
   const [isBlurred, setIsBlurred] = useState(false);
-  const [isIncorrect, setIsIncorrect] = useState(false);
+  const [isIncorrect, setIsIncorrect] = useState(true);
+
+  useEffect(() => {
+      const timer = setTimeout(() => {
+        setIsBlurred(prevValue => !prevValue);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }, []);
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setIsBlurred(prevValue => !prevValue);
+      }, 6000);
+      return () => clearTimeout(timer);
+    }, []);
+
   return (
     <main className={`dark ${isBlurred ? 'blurred' : ''}`}>
       <Header />
@@ -114,18 +127,21 @@ export default function Home() {
       <div className="elements">
         <CurrentCourseInformation chapterNum={"2"} course={"Introduction to Machine Learning"} pages={"18"}  time={"2"} image={"/images/character.png"}/>
       </div> */}
-      <div class='auth-main-text'>Activate your test lecture
-        <div class='auth-sub-text'>Enter the 6-digit authorization code that was provided to you in the onboarding email.</div>
+      <div className='auth-main-text'>Activate your test lecture
+        <div className='auth-sub-text'>Enter the 6-digit authorization code that was provided to you in the onboarding email.</div>
         <div className="elements" >
           <InputOTPDemo />
         </div>
-        <div class='home-page-link'> Looking for our home page? Click here.</div>
+        <div className='home-page-link'> Looking for our home page? Click here.</div>
         <div class={`blank ${isIncorrect ? 'wrong-input' : ''}`}>Invalid authorization code. Make sure you’ve entered the correct code.</div>
       </div>
-      <div class='footer'>
+      <div className='footer'>
         <img src='/images/studia-small-logo.png' class="small-image" />
-        <div class="footer-subtext">AI pipelines adapted to your learning style.</div>
-        <div class="copyright">© 2024, Crafted by passionate students in Texas.</div>
+        <div className="footer-subtext">AI pipelines adapted to your learning style.</div>
+        <div className="copyright">© 2024, Crafted by passionate students in Texas.</div>
+      </div>
+      <div className={`overlay ${isBlurred ? 'active' : ''}`}>
+      <img src='/images/studia-small-logo.png' className="overlay-image" />
       </div>
     </main>
   );
