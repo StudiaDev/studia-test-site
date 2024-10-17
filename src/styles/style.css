@@ -1,62 +1,143 @@
-.header-logo {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-  }
-
-.resizable-header {
-height: 100px;
+/* Div Hierarchy */
+.flex-full {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.flex-panels {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
 }
 
-.elements {
-  padding-inline: 4vh;
-  padding-block: 3vh;
+/* left panel*/
+.left-flex-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  flex: 1;
+  padding-block: 20px;
+}
+.left-panel-element {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-inline: 20px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border-bottom: 0.6px solid var(--gray);
+}
+.header-elements {
+  padding-inline: 30px;
+  padding-block: 20px;
   box-sizing: border-box;
 }
 
-.container {
+/* Information Container */
+.information-container-header {
+  display: flex;
+  height: 30px;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--info-container-header);
+  border-bottom: 0.7px solid var(--gray);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.information-container-header-text {
+  padding-left: 15px;
+  font-size: 10px;
+}
+.information-container {
+  border: 0.7px solid var(--gray);
+  border-radius: 6px;
+  width: 350px;
+}
+
+/* Pipeline Information Container */
+.pipeline-content-margins {
+  padding-left: 15px;
+}
+.pipeline-content-subtitle {
+  padding-bottom: 15px;
+  font-size: 8px;
+  color: var(--subtext-color);
+}
+.pipeline-content-title {
+  padding-top: 10px;
+  font-size: 13px;
+}
+
+/* Chapter Information Container */
+.chapter-information-content {
+  padding-inline: 15px;
+  padding-top: 10px;
+  padding-bottom: 15px;
   display: flex;
   flex-direction: column;
-  height: 90vh;
-  align-items: flex-start;
+}
+.chapter-information-content-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 13px;
+}
+.chapter-information-content-chapter-number {
+  font-size: 13px;
+  color: var(--subtext-color);
+}
+.chapter-information-metadata {
+  font-size: 9px;
+  color: var(--subtext-color);
+  padding-top: 10px;
 }
 
-.top {
-  width: 100%;
+/* Chapter Information Media Container */
+.media-container {
+  width: 350px;
+  border: 0.7px solid var(--gray); 
+  border-radius: 13px;
+  background-color: var(--info-container-header); 
 }
-
-.bottom {
-  margin-top: auto;
-  width: 100%;
-}
-
-.report-button {
+.media-content {
+  padding-inline: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   display: flex;
-  gap: 1vh;
-  padding-block: 1vh;
+  flex-direction: row;
+  align-items: center;
+}
+.media-image {
+  width: 45px;           
+  height: 45px;  
+  object-fit: cover;       
+  border-radius: 6px;   
+}
+.media-subtext {
+  color: var(--subtext-color);
+  font-size: 8px
+}
+.media-title-text {
+  font-size: 13px
+}
+.media-text-block {
+  padding-left: 10px;
 }
 
-.courseTitle {
+/* Presentation Manager Nav Buttons */
+.presentation-manager-nav-buttons {
   display: flex;
-  vertical-align: middle;
-  gap: 1vh;
+  flex-direction: row;
+  gap: 15px;
 }
-
-.courseTitle-ellipse {
-  width: 5%;
-}
-.headers {
-  padding-bottom: 1vh;
-}
-
-.card {
-  margin-bottom: 3vh;
-}
-
-.input-field {
-  color: var(--gray);
-}
-
-.gray-text {
-  color: var(--gray);
+.button-icon {
+  border: 0.7px solid var(--gray);
 }
