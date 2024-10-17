@@ -1,3 +1,10 @@
+main {
+  transition: filter 0.6s ease-in-out;
+}
+main.blurred {
+  filter: blur(10px); 
+}
+
 .homepage-text {
   display: flex;
   flex-direction: row;
