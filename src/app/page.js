@@ -37,40 +37,28 @@ export default function Home() {
     try {
       const res = await fetch(`/api/course?code=${code}`);
       const data = await res.json();
-
-      if (!data || !data.user || !data.course || !data.chapter) {
-        console.error('No data found or some data is missing');
-        setError('No data found');
-        return;
-      }
-
-      // check & log chapterText
-      let parsedChapterText = {};
-      if (typeof data.chapterText === 'string') {
-        parsedChapterText = JSON.parse(data.chapterText);
+  
+      if (data.status === 1) {
+        // Success
+        const { user, course, chapter, chapterText } = data.data;
+  
+        setUser(user);
+        setCourse(course);
+        setChapter(chapter);
+        setChapterText(chapterText);
+        setIsActivated(true);
+        setError(null);
       } else {
-        parsedChapterText = data.chapterText;
+        // Error
+        console.error('Error:', data.error);
+        setError(data.error || 'An error occurred');
       }
-
-      // set state with parsed data
-      setUser(data.user);
-      setCourse(data.course);
-      setChapter(data.chapter);
-      setChapterText(parsedChapterText);
-      setIsActivated(true);
-
     } catch (error) {
       console.error('Error fetching data:', error);
       setError('Error fetching data');
     }
   };
-
-  // only fetch data if user has been activated
-  useEffect(() => {
-    if (isActivated) {
-      handleActivation();
-    }
-  }, [isActivated]);
+  
 
   if (!isActivated) {
     return (
