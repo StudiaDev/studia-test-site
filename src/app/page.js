@@ -8,6 +8,14 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp"
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
 function Header() {
   return (
     <div className="header-wrapper">
@@ -66,7 +74,7 @@ function RawChapterInformationContainer({book, chapterNum, pages, words, time}) 
 
 function CurrentCourseInformation({course, chapterNum, pages, image}) {
   return (
-    <div className='general-card'>
+    <div class='general-card'>
       <div className="chapter-information-container" style={{display: 'flex', flexDirection: 'row',  alignItems: 'center'}}>
         <div> 
           <img src={image} className="course-image"></img>
@@ -97,92 +105,64 @@ export function InputOTPDemo() {
   )
 }
 
-const Carousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const cards = [
-    { id: 1, text: "Card 1: This is the first card" },
-    { id: 2, text: "Card 2: Here’s the second card" },
-    { id: 3, text: "Card 3: Another card with text" },
-    { id: 4, text: "Card 4: The final card in this example" }
-  ];
-
-  const nextCard = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === cards.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-  
-  const prevCard = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? cards.length - 1 : prevIndex - 1
-    );
-  };
-  
-  return (
-    <div className="carousel-container">
-      <button onClick={prevCard} className="carousel-button">
-        Previous
-      </button>
-  
-      <div className="carousel-card">
-        {cards.map((card, index) => (
-          <div
-            key={card.id}
-            className={`card ${index === currentIndex ? "active" : ""}`}
-          >
-            <p>{card.text}</p>
-          </div>
-        ))}
-      </div>
-  
-      <button onClick={nextCard} className="carousel-button">
-        Next
-      </button>
-    </div>
-  );
-  
-};
-
-
 export default function Home() {
 
   const [isBlurred, setIsBlurred] = useState(false);
   const [isIncorrect, setIsIncorrect] = useState(true);
 
-    return (
-      <main className={`dark ${isBlurred ? 'blurred' : ''}`}>
-        {/* Header */}
-        <Header />
-  
-        {/* Flex container with sidebar and carousel */}
-        <div className="content-wrapper">
-          {/* Main content (sidebar-like) on the left */}
-          <div className="main-content">
-            <div className="elements">
-              <PipelineInformationContainer checkpoint={"frontera-beta/v090524"} model={"gpt-4o-2024-08-06"} />
-            </div>
-            <div className="elements">
-              <RawChapterInformationContainer book={"Global Conflicts Throughout History - 3rd Edition"} chapterNum={"Chapter 3"} pages={"13"} words={"12,342"} time={"2"} />
-            </div>
-            <div className="elements">
-              <CurrentCourseInformation chapterNum={"2"} course={"Introduction to Machine Learning"} pages={"18"} image={"/images/character.png"} />
-            </div>
-          </div>
-  
-          {/* Carousel Component on the right */}
-          <div className="carousel-wrapper">
-            <Carousel />
-          </div>
-        </div>
-  
-        {/* Footer */}
-        <div className='footer'>
-          <img src='/images/studia-small-logo.png' className="small-image" />
-          <div className="footer-subtext">AI pipelines adapted to your learning style.</div>
-          <div className="copyright">© 2024, Crafted by passionate students in Texas.</div>
-        </div>
-      </main>
-    );
-  }
+  // useEffect(() => {
+  //     const timer = setTimeout(() => {
+  //       setIsBlurred(prevValue => !prevValue);
+  //     }, 3000);
+  //     return () => clearTimeout(timer);
+  //   }, []);
+  //   useEffect(() => {
+  //     const timer = setTimeout(() => {
+  //       setIsBlurred(prevValue => !prevValue);
+  //     }, 6000);
+  //     return () => clearTimeout(timer);
+  //   }, []);
 
+  return (
+    <main className={`dark ${isBlurred ? 'blurred' : ''}`}>
+    {/* Header */}
+    <Header />
+
+    {/* Flex container with sidebar and carousel */}
+    <div className="content-wrapper">
+      {/* Main content (sidebar-like) on the left */}
+      <div className="main-content">
+        <div className="elements">
+          <PipelineInformationContainer checkpoint={"frontera-beta/v090524"} model={"gpt-4o-2024-08-06"} />
+        </div>
+        <div className="elements">
+          <RawChapterInformationContainer book={"Global Conflicts Throughout History - 3rd Edition"} chapterNum={"Chapter 3"} pages={"13"} words={"12,342"} time={"2"} />
+        </div>
+        <div className="elements">
+          <CurrentCourseInformation chapterNum={"2"} course={"Introduction to Machine Learning"} pages={"18"} image={"/images/character.png"} />
+        </div>
+      </div>
+
+      {/* Carousel Component on the right */}
+      <div className="carousel-wrapper">
+        <Carousel>
+          <CarouselContent>
+            <CarouselItem>Hi</CarouselItem>
+            <CarouselItem>Hello</CarouselItem>
+            <CarouselItem>Boo</CarouselItem>
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </div>
+    </div>
+
+    {/* Footer */}
+    <div className='footer'>
+      <img src='/images/studia-small-logo.png' className="small-image" />
+      <div className="footer-subtext">AI pipelines adapted to your learning style.</div>
+      <div className="copyright">© 2024, Crafted by passionate students in Texas.</div>
+    </div>
+    </main>
+  );
+}
