@@ -1,4 +1,4 @@
-/* Div Hierarchy */
+
 .flex-full {
   display: flex;
   flex-direction: column;
@@ -6,18 +6,17 @@
 }
 .flex-panels {
   display: flex;
-  flex-direction: row;
-  flex: 1;
+  height: 100%;
 }
 
-/* left panel*/
+
 .left-flex-panel {
+  width: 31%; 
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 20px;
-  flex: 1;
-  padding-block: 20px;
+  background-color: #0a0a0a;
 }
 .left-panel-element {
   display: flex;
@@ -39,7 +38,7 @@
   box-sizing: border-box;
 }
 
-/* Information Container */
+
 .information-container-header {
   display: flex;
   height: 30px;
@@ -60,7 +59,6 @@
   width: 350px;
 }
 
-/* Pipeline Information Container */
 .pipeline-content-margins {
   padding-left: 15px;
 }
@@ -74,7 +72,6 @@
   font-size: 13px;
 }
 
-/* Chapter Information Container */
 .chapter-information-content {
   padding-inline: 15px;
   padding-top: 10px;
@@ -100,7 +97,7 @@
   padding-top: 10px;
 }
 
-/* Chapter Information Media Container */
+
 .media-container {
   width: 350px;
   border: 0.7px solid var(--gray); 
@@ -132,7 +129,7 @@
   padding-left: 10px;
 }
 
-/* Presentation Manager Nav Buttons */
+
 .presentation-manager-nav-buttons {
   display: flex;
   flex-direction: row;
@@ -140,4 +137,61 @@
 }
 .button-icon {
   border: 0.7px solid var(--gray);
+}
+
+
+.page-change-buttons {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  gap: 15px; 
+  margin-top: 20px; 
+}
+
+
+.page-change-buttons {
+  position: absolute;
+  bottom: 59px;
+  display: flex;
+  gap: 10px;
+}
+
+.page-button {
+  background-color: #0a0a0a;
+  border: 1px solid #363636;
+  border-radius: 6px;
+  width: 33px;
+  height: 33px;
+  color: white;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.page-change-button:hover {
+  background-color: #070707; 
+}
+
+
+.triangle-right {
+  transform: rotate(180deg);
+}
+
+.flex-full {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  color: white;
+}
+
+.right-flex-panel {
+  width: 69%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px;
 }
