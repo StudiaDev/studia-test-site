@@ -5,6 +5,7 @@ import { AuthInput } from "@/components/auth/input";
 import React, { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/hooks/use-toast"
+import { jsPDF } from 'jspdf';
 
 export default function Home() {
   const [activationCode, setActivationCode] = useState("");
@@ -58,12 +59,16 @@ export default function Home() {
     }
   };
 
+  const handleOpenLink = () => {
+    window.open(chapter.rawText, '_blank');
+  };
+
   return (
     <main className={`dark ${authState === "loading" ? "blurred" : ""}`}>
       <div className="auth-page-wrapper">
         <Header />
         <div className="auth-content-wrapper-col">
-          <h2>Activate your test lecture.</h2>
+          <h2 className="fade-out-down">Activate your test lecture.</h2>
           <p className="paragraph-text bottom-pad">
             Enter the 6-digit authorization code that was provided to you in the onboarding email.
           </p>
@@ -75,6 +80,9 @@ export default function Home() {
           <div className="homepage-text">
             <p className="homepage-lead">Looking for our home page?</p>
             <p className="homepage-trail">Click here.</p>
+            {chapterText && (
+              <button onClick={handleOpenLink}>Open PDF Reader</button>
+            )}
           </div>
         </div>
       </div>
