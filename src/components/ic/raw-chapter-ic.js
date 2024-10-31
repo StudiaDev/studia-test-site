@@ -25,20 +25,31 @@ import InformationContainer from "./information-container"
  * />
  */
 
-export default function RawChapterInformationContainer({book, chapterNum, pages, words, time}) {
+export default function RawChapterInformationContainer({book, chapterNum, pages, words, time, rawText}) {
     return (
       <InformationContainer title={"Raw Textbook Information"}>
-        <RawChapterInformationContainerContent book={book} chapterNum={chapterNum} pages={pages} words={words} time={time} />
+        <RawChapterInformationContainerContent
+          book={book}
+          chapterNum={chapterNum}
+          pages={pages}
+          words={words}
+          time={time}
+          onClick={handleOpenPdf}
+          rawText={rawText}  />
       </InformationContainer>
     )
   }
 
-function RawChapterInformationContainerContent({book, chapterNum, pages, words, time}) {
+  function RawChapterInformationContainerContent({ book, chapterNum, pages, words, time, onClick, rawText }) {
     return (
-        <div className="chapter-information-content">
-          <p className="chapter-information-content-title">{book}</p>
-          <p className="chapter-information-content-chapter-number">Chapter {chapterNum}</p>
-          <p className="chapter-information-metadata">{pages} Pages - {words} Words - {time} Hours est.</p>
+        <div className="chapter-information-content" onClick={() => onClick(rawText)} style={{ cursor: 'pointer' }}>
+            <p className="chapter-information-content-title">{book}</p>
+            <p className="chapter-information-content-chapter-number">Chapter {chapterNum}</p>
+            <p className="chapter-information-metadata">{pages} Pages - {words} Words - {time} Hours est.</p>
         </div>
-    )
-}
+    );
+  }
+
+const handleOpenPdf = (rawText) => {
+  window.open(rawText, '_blank');
+};

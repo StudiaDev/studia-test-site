@@ -70,6 +70,8 @@ export default function Home() {
         />}
         {authState === "activated" && <Portal 
           course={course}
+          chapter={chapter}
+          chapterText={chapterText}
         />}
       </div>
       <Toaster />

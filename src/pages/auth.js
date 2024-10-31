@@ -14,7 +14,7 @@ export function Auth({ setActivationCode, authState, setAuthState }) {
             />
             <div className="homepage-text">
                 <p className="homepage-lead">Looking for our home page?</p>
-                <p className="homepage-trail">Click here.</p>
+                <a className="homepage-trail" href="https://studia.dev" target="_blank">Click here.</a>
             </div>
         </div> 
     )

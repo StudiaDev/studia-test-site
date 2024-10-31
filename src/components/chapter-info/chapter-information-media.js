@@ -1,6 +1,6 @@
 export default function ChapterInformationMediaContainer({course, chapterNum, pages, image}) {
     return (
-        <div class='media-container'>
+        <div className='media-container'>
         <div className="media-content">
             <img src={image} className="media-image"></img>
             <div className="media-text-block">
