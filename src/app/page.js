@@ -4,8 +4,8 @@ import Header from "@/components/header";
 import React, { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/hooks/use-toast"
-import { Auth } from "@/pages/auth";
-import { Portal } from "@/pages/portal";
+import { Auth } from "@/components/pages/auth";
+import { Portal } from "@/components/pages/portal";
 
 export default function Home() {
   const [activationCode, setActivationCode] = useState("");
