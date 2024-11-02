@@ -19,13 +19,13 @@
  */
 
 export default function InformationContainer({ title, children }) {
-    return (
-      <div className="information-container">
-        <InformationContainerHeader title={title} />
-        <InformationContainerContent children={children} />
-      </div>
-    )
-  }
+  return (
+    <div className="information-container">
+      <InformationContainerHeader title={title} />
+      <InformationContainerContent>{children}</InformationContainerContent>
+    </div>
+  );
+}
   
 /* check on this if any issues ever arise (no styling on div) */
 function InformationContainerContent({ children }) {

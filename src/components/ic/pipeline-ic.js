@@ -25,11 +25,11 @@ export default function PipelineInformationContainer({checkpoint, model}) {
     )
   }
 
-function PipelineInformationContainerContent({checkpoint, model}) {
+  function PipelineInformationContainerContent({ checkpoint, model }) {
     return (
-        <div>
-          <p className="pipeline-content-title pipeline-content-margins">{checkpoint}</p>
-          <p className="pipeline-content-subtitle pipeline-content-margins">Running on '{model}'</p>
-        </div>
-    )
-}
+      <div>
+        <p className="pipeline-content-title pipeline-content-margins">{checkpoint}</p>
+        <p className="pipeline-content-subtitle pipeline-content-margins">Running on &#39;{model}&#39;</p>
+      </div>
+    );
+  }  
