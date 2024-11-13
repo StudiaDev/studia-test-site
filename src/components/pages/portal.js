@@ -81,7 +81,7 @@ export function Portal({ course, chapter, chapterText }) {
                     />
                     <RawChapterInformationContainer 
                         book={course.bookTitle}
-                        chapterNum={chapter.chapterNum}
+                        chapterNum={`${chapter.chapterNum} - ${chapter.title}`}
                         pages={chapter.chapterPages}
                         words={chapter.chapterWords}
                         time={calculateReadingTime(chapter.chapterWords)}
