@@ -7,9 +7,18 @@ import ChapterInformationMediaContainer from "@/components/chapter-info/chapter-
 
 
 const mathJaxConfig = {
-    loader: { load: ["input/tex", "output/chtml"] },
-    tex: { inlineMath: [["$", "$"]] },
-};
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      packages: { '[+]': ['ams'] }, // Add the AMS package explicitly
+    },
+    options: {
+      enableMenu: true, // Enable the MathJax contextual menu
+    },
+    loader: {
+      load: ['[tex]/ams'], // Explicitly load the AMS package
+    },
+  };
 
 
 export function Portal({ course, chapter, chapterText}) {    
@@ -91,7 +100,7 @@ export function Portal({ course, chapter, chapterText}) {
                             <MathJax>
                                 {/* {chapterText.topic_list[topicIndex].topic_content[contentIndex]}
                                  */}
-                                 <p>$\begin{smallmatrix} 1 \\ 0 \\ 0 \\ 0 \\ 1 \end{smallmatrix}$</p>
+                                 <p>{`$$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$$`}</p>
                             </MathJax>
                         )}
                 </h2>
