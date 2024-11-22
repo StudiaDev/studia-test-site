@@ -123,9 +123,7 @@ export function Portal({ course, chapter, chapterText }) {
                         ? chapterText.topic_list[topicIndex].topic_title
                         : (
                             <MathJax>
-                                {/* {chapterText.topic_list[topicIndex].topic_content[contentIndex]}
-                                 */}
-                                 <p>{`$$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$$`}</p>
+                                {chapterText.topic_list[topicIndex].topic_content[contentIndex]}
                             </MathJax>
                         )}
                 </h2>
