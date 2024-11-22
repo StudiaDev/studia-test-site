@@ -128,7 +128,9 @@ export function Portal({ course, chapter, chapterText }) {
                         )}
                 </h2>
                     <h3 className="topic-quote">
-                        {contentIndex === -1 ? `"${chapterText.topic_list[topicIndex].topic_quote}"` : ""}
+                        <MathJax>
+                            {contentIndex === -1 ? `"${chapterText.topic_list[topicIndex].topic_quote}"` : ""}
+                        </MathJax>
                     </h3>
                     <Image src="/images/logo.svg" alt="Logo" width={30} height={50} className="logo" />
                 </div>
