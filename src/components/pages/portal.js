@@ -10,13 +10,13 @@ const mathJaxConfig = {
     tex: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],
       displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      packages: { '[+]': ['ams'] }, // Add the AMS package explicitly
+      packages: { '[+]': ['ams'] },
     },
     options: {
-      enableMenu: true, // Enable the MathJax contextual menu
+      enableMenu: true,
     },
     loader: {
-      load: ['[tex]/ams'], // Explicitly load the AMS package
+      load: ['[tex]/ams'],
     },
   };
 
@@ -122,13 +122,13 @@ export function Portal({ course, chapter, chapterText }) {
                     {contentIndex === -1
                         ? chapterText.topic_list[topicIndex].topic_title
                         : (
-                            <MathJax>
+                            <MathJax inline dynamic>
                                 {chapterText.topic_list[topicIndex].topic_content[contentIndex]}
                             </MathJax>
                         )}
                 </h2>
                     <h3 className="topic-quote">
-                        <MathJax>
+                        <MathJax inline dynamic>
                             {contentIndex === -1 ? `"${chapterText.topic_list[topicIndex].topic_quote}"` : ""}
                         </MathJax>
                     </h3>
