@@ -17,9 +17,6 @@ const mathJaxConfig = {
     },
     loader: {
       load: ['[tex]/ams'],
-      paths: {
-        mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5",
-      },
     },
   };
 
@@ -125,13 +122,13 @@ export function Portal({ course, chapter, chapterText }) {
                     {contentIndex === -1
                         ? chapterText.topic_list[topicIndex].topic_title
                         : (
-                            <MathJax>
+                            <MathJax inline dynamic>
                                 {chapterText.topic_list[topicIndex].topic_content[contentIndex]}
                             </MathJax>
                         )}
                 </h2>
                     <h3 className="topic-quote">
-                        <MathJax>
+                        <MathJax inline dynamic>
                             {contentIndex === -1 ? `"${chapterText.topic_list[topicIndex].topic_quote}"` : ""}
                         </MathJax>
                     </h3>
