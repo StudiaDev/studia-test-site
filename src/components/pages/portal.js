@@ -10,13 +10,16 @@ const mathJaxConfig = {
     tex: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],
       displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      packages: { '[+]': ['ams'] }, // Add the AMS package explicitly
+      packages: { '[+]': ['ams'] },
     },
     options: {
-      enableMenu: true, // Enable the MathJax contextual menu
+      enableMenu: true,
     },
     loader: {
-      load: ['[tex]/ams'], // Explicitly load the AMS package
+      load: ['[tex]/ams'],
+      paths: {
+        mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5",
+      },
     },
   };
 
