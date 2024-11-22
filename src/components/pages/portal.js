@@ -1,8 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Image from 'next/image';
-import PipelineInformationContainer from "@/components/ic/pipeline-ic";
-import RawChapterInformationContainer from "@/components/ic/raw-chapter-ic";
-import ChapterInformationMediaContainer from "@/components/chapter-info/chapter-information-media";
+import { MathJax, MathJaxContext } from "better-react-mathjax";
+import PipelineInformationContainer from "@/components/ic/pipeline-ic"
+import RawChapterInformationContainer from "@/components/ic/raw-chapter-ic"
+import ChapterInformationMediaContainer from "@/components/chapter-info/chapter-information-media"
+
+
+const mathJaxConfig = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      packages: { '[+]': ['ams'] }, // Add the AMS package explicitly
+    },
+    options: {
+      enableMenu: true, // Enable the MathJax contextual menu
+    },
+    loader: {
+      load: ['[tex]/ams'], // Explicitly load the AMS package
+    },
+  };
+
 
 export function Portal({ course, chapter, chapterText }) {    
     const [topicIndex, setTopicIndex] = useState(0);
@@ -72,9 +89,11 @@ export function Portal({ course, chapter, chapterText }) {
     }, [topicIndex, contentIndex]);
 
     return (
+        <MathJaxContext config={mathJaxConfig}>
         <div className="flex-panels">
             <div className="left-flex-panel portal-wrapper">
                 <div className="left-panel-element">
+                    <h1>Welcome back, YC</h1>
                     <PipelineInformationContainer
                         checkpoint="frontera-beta/v092324"
                         model="gpt-4o"
@@ -99,11 +118,15 @@ export function Portal({ course, chapter, chapterText }) {
             </div>
             <div className="right-flex-panel">
                 <div className={`text-container ${isFadingOut ? 'fadeOut' : 'fadeInUp'}`}>
-                    <h2>
-                        {contentIndex === -1
-                            ? chapterText.topic_list[topicIndex].topic_title
-                            : chapterText.topic_list[topicIndex].topic_content[contentIndex]}
-                    </h2>
+                <h2>
+                    {contentIndex === -1
+                        ? chapterText.topic_list[topicIndex].topic_title
+                        : (
+                            <MathJax>
+                                {chapterText.topic_list[topicIndex].topic_content[contentIndex]}
+                            </MathJax>
+                        )}
+                </h2>
                     <h3 className="topic-quote">
                         {contentIndex === -1 ? `"${chapterText.topic_list[topicIndex].topic_quote}"` : ""}
                     </h3>
@@ -131,5 +154,6 @@ export function Portal({ course, chapter, chapterText }) {
                 </div>
             </div>
         </div>
-    );
+        </MathJaxContext>
+    )
 }
